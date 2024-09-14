@@ -1,0 +1,17 @@
+### 1. *www.foobar.com (Utilisateur)*
+   - Il représente le point d'entrée des utilisateurs qui se connectent au site web *www.foobar.com*. C'est l'URL à laquelle les utilisateurs envoient leurs requêtes pour accéder au site.
+
+### 2. *HAProxy (Équilibreur de charge)*
+   - C'est un composant clé utilisé pour distribuer le trafic entrant entre plusieurs serveurs. L'équilibreur de charge garantit que la charge de travail est répartie entre les serveurs, ce qui améliore la performance et la disponibilité. Dans ce cas, HAProxy redirige le trafic vers deux serveurs : un serveur web (Nginx) et un serveur d'application.
+
+### 3. *Serveur 1 (Nginx - Serveur Web)*
+   - Ce serveur est responsable de la gestion des requêtes HTTP des utilisateurs. *Nginx* est un serveur web populaire qui sert les fichiers statiques comme les images, les fichiers HTML et CSS. Il peut aussi agir comme un proxy inversé pour acheminer les requêtes vers d'autres serveurs (comme le serveur d'application).
+
+### 4. *Serveur 2 (Serveur d'application)*
+   - Ce serveur exécute le code de l'application web (appelé *codebase*). Il prend en charge la logique applicative, exécute les calculs ou requêtes demandées par l'utilisateur, et peut interagir avec la base de données pour récupérer ou stocker des informations.
+
+### 5. *Ensemble de fichiers d'application (Codebase)*
+   - Ce composant contient le code de l'application (comme les fichiers PHP, JavaScript, Python, etc.) qui est utilisé par le serveur d'application pour traiter les requêtes. Il s'agit du cœur de l'application, qui contrôle ce que l'utilisateur voit et comment il interagit avec le site web.
+
+### 6. *Base de données MySQL*
+   - C'est une base de données relationnelle qui stocke les informations critiques de l'application, telles que les données des utilisateurs, les articles, les transactions, etc. Le serveur d'application interagit avec cette base de données pour lire ou écrire des données selon les actions effectuées par les utilisateurs. *MySQL* est très souvent utilisé pour gérer ce type de données dans les infrastructures web.
