@@ -1,0 +1,12 @@
+1. *Nom de Domaine* : www.foobar.com. Ce nom de domaine est configuré pour pointer vers l'adresse IP du serveur, qui est 8.8.8.8. Cela signifie que lorsque l'utilisateur entre www.foobar.com, la requête est envoyée à cette adresse IP.
+
+2. *Serveur* : À l'adresse IP 8.8.8.8, Un serveur unique héberge toutes les parties du site web footbar.com. Ce serveur est capable de gérer à la fois le serveur web, le serveur d'application et la base de données.
+
+3. *Serveur Web (Nginx)* : Sur ce serveur, on installe Nginx, qui est un serveur web. Nginx est responsable de la gestion des requêtes HTTP. Lorsqu'un utilisateur accède à www.foobar.com, Nginx reçoit cette requête et la traite.
+
+4. *Serveur d'Application* : Nginx redirige ensuite la requête vers le serveur d'application. Ce serveur exécute la logique de notre application, ce qui signifie qu'il traite les données et les requêtes spécifiques au site web.
+
+5. *Fichier d'Application* : La base de code de l'application est stockée sur le serveur. Ce fichier d'application contient tout le code nécessaire pour faire fonctionner le site web, des pages HTML aux scriptes de traitement des données.
+
+6. *Base de Données (MySQL)* : Enfin, le serveur héberge également une base de données MySQL. Cette base de données stocke toutes les informations nécessaires pour le site, comme les utilisateurs, les articles, les commentaires, etc. Lorsque le serveur d'application a besoin de données, il interroge la base de données MySQL.
+
