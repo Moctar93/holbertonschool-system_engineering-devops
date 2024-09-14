@@ -1,0 +1,34 @@
+1. Accès utilisateur via HTTPS
+L'utilisateur saisit l'URL https://www.foobar.com dans son navigateur, demandant à accéder au site via un trafic sécurisé (HTTPS).
+Le navigateur vérifie que le certificat SSL du site est valide pour sécuriser la connexion.
+
+2. SSL Certificate
+Le certificat SSL assure que la connexion entre l'utilisateur et le site est sécurisée via HTTPS (cryptage des données).
+
+3. Firewall 1 (Équilibreur de charge protégé)
+Une fois le trafic sécurisé établi, il passe à travers Firewall 1, qui protège l'équilibreur de charge HAProxy des menaces potentielles provenant d'Internet.
+
+4. HAProxy (Équilibreur de charge)
+L'équilibreur de charge HAProxy répartit les requêtes entre plusieurs serveurs. Il permet de distribuer le trafic de manière équitable pour éviter une surcharge d’un seul serveur.
+HAProxy utilise un algorithme de distribution (ex: Round Robin ou Least Connections) pour acheminer les demandes vers Serveur 1 ou Serveur 2.
+
+5. Serveur 1 (Nginx Web Server) et Serveur 2 (Application Server) :
+Les requêtes peuvent être envoyées soit vers :
+Serveur 1, où Nginx fonctionne en tant que serveur web qui traite les requêtes HTTP.
+Serveur 2, qui exécute l'application avec le code de l'application (backend).
+Ces serveurs permettent de gérer différents aspects de l'application web, tels que les ressources statiques (images, HTML) ou le traitement des requêtes dynamiques (logiciel de l'application).
+
+6. Firewall 2 (Serveur 1) et Firewall 3 (Serveur 2)
+Chaque serveur est protégé par un pare-feu dédié (Firewall 2 et Firewall 3), qui contrôle et filtre le trafic autorisé pour sécuriser l'accès aux serveurs et empêcher les menaces d'atteindre directement les ressources internes.
+
+7. Ensemble de fichiers (Codebase)
+Le code de l'application (fichiers) est déployé et disponible sur les serveurs.
+Cela inclut le code frontend (géré par Nginx sur Serveur 1) et le code backend (géré par l'application sur Serveur 2).
+
+8. MySQL Database (Base de données)
+Les serveurs web ou d'application envoient des requêtes à la base de données MySQL pour récupérer ou stocker des données, telles que les informations des utilisateurs ou les contenus dynamiques du site.
+MySQL est le système de gestion de base de données relationnelle qui stocke les informations nécessaires pour le fonctionnement du site.
+
+9. Surveillance (Monitoring Clients)
+Un système de surveillance (par exemple Sumologic ou un autre outil de monitoring) est configuré pour surveiller les performances, la disponibilité et la sécurité du système.
+Cela permet de détecter rapidement les anomalies, les pannes ou les menaces et de garantir la continuité de service.
