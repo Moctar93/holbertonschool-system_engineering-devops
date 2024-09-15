@@ -1,0 +1,25 @@
+1- Utilisateur envoie une requête : L'utilisateur saisit l'URL www.foobar.com dans son navigateur. La requête est envoyée pour accéder au site web.
+
+2- Requête DNS : La première étape est la résolution DNS. Le navigateur de l'utilisateur envoie une requête à un serveur DNS pour obtenir l'adresse IP associée à www.foobar.com. Le serveur DNS renvoie l'IP publique du serveur, par exemple, 8.8.8.8.
+
+3- Connexion HTTPS : Une connexion sécurisée via HTTPS est établie. Le navigateur demande le certificat SSL du serveur pour s'assurer que la connexion est sécurisée et que le site est bien celui qu'il prétend être. Le certificat est validé, et une communication sécurisée est établie.
+
+4- Passage à travers le Firewall 1 : Le trafic passe par un premier pare-feu (Firewall 1) qui protège l'accès à l'équilibreur de charge (HAProxy). Ce pare-feu filtre les connexions pour protéger l'infrastructure contre les menaces extérieures.
+
+5- Équilibreur de charge (HAProxy) : Une fois passé le pare-feu, la requête atteint l'équilibreur de charge (HAProxy). L'équilibreur de charge distribue les requêtes entrantes entre les serveurs disponibles, afin d'améliorer la répartition du trafic et éviter la surcharge d'un seul serveur.
+
+6- Redirection vers un serveur : L'équilibreur de charge envoie la requête à l'un des serveurs disponibles en fonction de l'algorithme de répartition (round-robin, least connections, etc.). Supposons qu'il envoie la requête à Serveur 1 qui est le serveur web (Nginx).
+
+7- Serveur Web (Nginx) : Le serveur web (Serveur 1) reçoit la requête HTTP. Nginx analyse la requête et détermine qu'il doit transférer la requête à un serveur d'application pour la logique métier.
+
+8- Serveur d'Application : Nginx transmet la requête au serveur d'application (Serveur 2) qui contient le code de l'application (backend). Le serveur d'application exécute la logique métier et interagit avec la base de données MySQL si nécessaire.
+
+9- Interaction avec la Base de Données : Si le serveur d'application a besoin de récupérer des données, il interagit avec la base de données MySQL. La base de données est stockée sur un serveur séparé pour améliorer les performances et la sécurité.
+
+10- Retour des données au serveur d'application : Les données récupérées sont renvoyées au serveur d'application, qui traite la réponse, la formate et la prépare pour le retour au client.
+
+11- Réponse au serveur web (Nginx) : Le serveur d'application renvoie la réponse finale (HTML, JSON, etc.) au serveur Nginx qui la transmet à l'utilisateur.
+
+12- Surveillance : Pendant ce temps, des clients de surveillance (ex: Sumologic, Zabbix) suivent les performances et la santé des différents composants de l'infrastructure.
+
+13- Réponse utilisateur : La réponse finale est renvoyée à l'utilisateur, qui voit le site web chargé dans son navigateur.
